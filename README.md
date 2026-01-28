@@ -450,4 +450,4 @@ Este projeto foi desenvolvido como trabalho académico para a disciplina Sistema
 
 ## Autores
 - André Gonçalves
-- André Zhan
+- [André Zhan](https://github.com/andr-zhan)
