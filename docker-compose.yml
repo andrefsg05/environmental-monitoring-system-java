@@ -1,0 +1,38 @@
+##
+## Docker Compose - Serviços de Infraestrutura
+## 
+## Provisiona o broker MQTT (Mosquitto) e a base de dados PostgreSQL,
+## com volumes persistentes e inicialização do schema via script.
+##
+version: '3.8'
+
+services:
+  # MQTT Broker - Mosquitto
+  mqtt-broker:
+    image: eclipse-mosquitto:2
+    container_name: mosquitto-broker
+    ports:
+      - "${MQTT_PORT}:1883"
+      - "${MQTT_WS_PORT}:9001"
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    restart: unless-stopped
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: monitoring-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
