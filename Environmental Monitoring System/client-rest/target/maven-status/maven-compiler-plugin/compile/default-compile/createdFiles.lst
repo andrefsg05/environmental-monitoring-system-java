@@ -1,7 +1,0 @@
-com/sd/rest/RestSensorSimulator.class
-com/sd/rest/config/RestClientConfig.class
-com/sd/rest/dto/MetricDTO.class
-com/sd/rest/dto/DeviceDTO.class
-com/sd/rest/RestSuperviser$CustomThread.class
-com/sd/rest/RestSuperviser.class
-com/sd/rest/RestSuperviser$1.class
